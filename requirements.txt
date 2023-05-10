@@ -1,0 +1,6 @@
+numpy==1.21.6
+flask_sqlalchemy==3.0.3
+flask==2.2.2
+
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.13.1+cpu

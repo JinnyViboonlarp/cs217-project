@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NER Entities</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Annotations</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Input Text</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for annotation in annotations %}
+        <tr>
+          <td>{{ annotation.id }}</td>
+          <td>{{ annotation.input_text }}</td>
+          <td>
+            <form
+              action="{{ url_for('edit_annotation', annotation_id=annotation.id) }}"
+              method="get"
+            >
+              <button class="edit-button" type="submit">Edit</button>
+            </form>
+          </td>
+          <td>
+            <form
+              action="{{ url_for('delete_annotation', annotation_id=annotation.id) }}"
+              method="post"
+            >
+              <button class="delete-button" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form action="{{ url_for('form') }}">
+      <button type="submit">Back to Home</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NER Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+    <h1>NER Result</h1>
+    <p><strong>Input text:</strong> {{ text }}</p>
+    <div>{{ entities_markup | safe }}</div>
+    <br>
+    <form method="POST" action="{{ url_for('update') }}">
+      <input type="hidden" name="text" value="{{ text }}">
+      <input type="hidden" name="annotation_id" value="{{ annotation_id }}">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Entity</th>
+            <th>Type</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entity in entities %}
+            <tr>
+              <td>{{ entity.text }}</td>
+              <td>{{ entity.label }}</td>
+              <td>
+                <div class="form-group">
+                  <input type="hidden" name="entity_id" value="{{ entity.id }}">
+                  <input type="text" class="form-control" id="{{ entity.text }}" name="entity_update_{{ entity.id }}" value="{{ entity.label }}">
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <br>
+    <form method="POST" action="{{ url_for('form_submit') }}">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <form method="POST" action="{{ url_for('export') }}">
+          <button type="submit" class="btn btn-primary">Export</button>
+    </form>
+  </body>
+</html>
+
+
