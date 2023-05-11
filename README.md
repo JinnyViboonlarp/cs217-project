@@ -4,6 +4,8 @@ This repository is a collaborated effort of Jinny Viboonlarp (jviboonlarp@brande
 
 This repo is mostly about running the web app using an already-trained-by-us NER model. For the details about how we trained that model and experimented with different model architectures, please visit [our "NLP component" repo](https://github.com/JinnyViboonlarp/cs217-training-cooking-ner/tree/main)
 
+This repo also contains the documentation for our project (in `Documentation.pdf`)
+
 ### Running the web application
 
 First, please make sure that every package in `requirements.txt` is installed in your environment.
